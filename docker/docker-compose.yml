@@ -1,0 +1,22 @@
+# Docker Compose file for running the HPR-PCL-QT application.
+# Author: Prakash Dhimal
+
+# Docker Compose version
+version: '3.3'
+
+services:
+  pcl:
+# use the build directory if changing the image
+#    build:
+#     context: docker
+    image: pcl
+    container_name: pcl
+    ports:
+      - '8080:8080'
+    volumes:
+      - /home/dhimal/gmu/fall-19/cs633/:/home/dhimal
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/input:/dev/input
+    environment:
+      - DISPLAY=$DISPLAY
+
